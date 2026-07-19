@@ -1,0 +1,158 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+  <meta name="theme-color" content="#6f4be8">
+  <meta name="description" content="Wongduen Speaking AI แอปฝึกพูดภาษาอังกฤษ">
+  <meta name="mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
+  <meta name="apple-mobile-web-app-title" content="Speaking AI">
+
+  <title>Wongduen Speaking AI</title>
+
+  <link rel="manifest" href="manifest.json?v=20260719">
+  <link rel="icon" type="image/png" href="assets/favicon.png?v=20260719">
+  <link rel="apple-touch-icon" href="assets/apple-touch-icon.png?v=20260719">
+  <link rel="stylesheet" href="style.css?v=20260719">
+</head>
+<body>
+  <div class="app-shell">
+    <section id="homePage" class="page active">
+      <header class="topbar">
+        <div class="brand">
+          <img src="assets/icon-192.png" alt="" class="brand-icon">
+          <div>
+            <strong>Wongduen</strong>
+            <span>Speaking AI</span>
+          </div>
+        </div>
+        <button id="installBtn" class="install-chip" hidden>ติดตั้งแอป</button>
+      </header>
+
+      <section class="hero">
+        <img src="assets/home-hero-final.jpg?v=20260719" alt="Wongduen Speaking AI">
+      </section>
+
+      <main class="content">
+        <section class="daily-card">
+          <div>
+            <p class="eyebrow">DAILY GOAL</p>
+            <h2>Speak English today</h2>
+            <p>ฝึกเพียงวันละ 5 ประโยค เพื่อเพิ่มความมั่นใจ</p>
+          </div>
+          <div class="goal-ring"><span id="totalScore">0</span><small>%</small></div>
+        </section>
+
+        <div class="section-heading">
+          <div>
+            <p class="eyebrow">START LEARNING</p>
+            <h2>Practice Topics</h2>
+            <p>Choose a topic and start speaking!</p>
+          </div>
+        </div>
+        <div id="topicGrid" class="topic-grid"></div>
+      </main>
+    </section>
+
+    <section id="lessonPage" class="page">
+      <header class="lesson-header">
+        <button id="backBtn" class="round-btn" aria-label="กลับ">←</button>
+        <div>
+          <p id="lessonThai"></p>
+          <h2 id="lessonTitle"></h2>
+        </div>
+        <span id="lessonCount" class="count-badge"></span>
+      </header>
+
+      <main class="lesson-content">
+        <div class="coach-card">
+          <img src="assets/icon-192.png" alt="AI Coach" class="coach-avatar">
+          <div>
+            <p>AI Speaking Coach</p>
+            <strong>Listen and repeat</strong>
+          </div>
+          <span class="online-dot"></span>
+        </div>
+
+        <div id="lessonEmoji" class="lesson-emoji">👋</div>
+        <h1 id="sentence"></h1>
+        <p id="thaiSentence" class="thai-sentence"></p>
+
+        <div class="button-row">
+          <button id="listenBtn" class="primary-btn">🔊 ฟังเสียง</button>
+          <button id="slowBtn" class="secondary-btn">🐢 ฟังช้า</button>
+        </div>
+
+        <div class="mic-wrap">
+          <span class="mic-pulse"></span>
+          <button id="micBtn" class="mic-btn" aria-label="กดเพื่อพูด">🎤</button>
+        </div>
+        <p id="micStatus" class="mic-status">แตะไมโครโฟนแล้วพูดตาม</p>
+
+        <div class="result-card">
+          <span>ระบบได้ยิน</span>
+          <strong id="heardText">—</strong>
+        </div>
+
+        <div id="feedback" class="feedback-card">
+          <strong>พร้อมฝึกแล้ว!</strong>
+          <p>ฟังประโยคก่อน แล้วกดไมโครโฟนเพื่อพูดตาม</p>
+        </div>
+
+        <div class="score-row">
+          <div>
+            <span>คะแนน</span>
+            <strong id="score">0%</strong>
+          </div>
+          <div id="stars" class="stars">☆☆☆</div>
+        </div>
+
+        <div class="button-row">
+          <button id="prevBtn" class="secondary-btn">← ก่อนหน้า</button>
+          <button id="nextBtn" class="primary-btn">ถัดไป →</button>
+        </div>
+      </main>
+    </section>
+
+    <section id="progressPage" class="page">
+      <header class="progress-header">
+        <div>
+          <p class="eyebrow">YOUR RESULTS</p>
+          <h2>My Progress</h2>
+        </div>
+        <button id="resetBtn" class="reset-btn">ล้างคะแนน</button>
+      </header>
+      <main id="progressList" class="progress-list"></main>
+    </section>
+
+    <section id="profilePage" class="page">
+      <main class="profile-page">
+        <img src="assets/icon-512.png" alt="Wongduen Speaking AI" class="profile-icon">
+        <h2>Wongduen Speaking AI</h2>
+        <p>แอปฝึกพูดภาษาอังกฤษสำหรับนักเรียน</p>
+        <div class="profile-card">
+          <span>ผู้จัดทำ</span>
+          <strong>คุณครูวงเดือน ขุนอากร</strong>
+        </div>
+        <div class="profile-card">
+          <span>บทเรียน</span>
+          <strong>10 Topics · 50 Sentences</strong>
+        </div>
+      </main>
+    </section>
+
+    <nav class="bottom-nav">
+      <button data-page="homePage" class="active">⌂<span>Home</span></button>
+      <button data-page="lessonPage">◉<span>Practice</span></button>
+      <button id="quickMic" class="quick-mic">🎤</button>
+      <button data-page="progressPage">▥<span>Progress</span></button>
+      <button data-page="profilePage">♙<span>Profile</span></button>
+    </nav>
+  </div>
+
+  <script src="data.js?v=20260719"></script>
+  <script src="app.js?v=20260719"></script>
+</body>
+</html>
